@@ -1,0 +1,9 @@
+production:
+  first-domain.com: APIKeyForFirstDomain==
+  second-domain.ru: APIKeyForTheSekondDomain==
+  localhost: APIKeyForLocalHostTesting==
+  # If you have a single domain just, paste API Key. No YML key required.
+development:
+  SingleAPIKeyForDevelopmentEnv==
+test:
+  test # Leave test ENV as it is for specs to pass
