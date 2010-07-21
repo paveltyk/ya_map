@@ -2,8 +2,8 @@
 == Install
   script/plugin install git@github.com:PavelTyk/ya_map.git
 == Example
-Run rake task to generate YML config file and JS
-  rake ya_map:install
+Generate YML config file and JS
+  script/generate ya_map
 Get API keys at yandex website[http://api.yandex.ru/maps/form.xml] and copy it to config/ya-map-api-key.yml
 Initialize YaMap::Map object in controller
   def index
