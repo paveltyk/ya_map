@@ -1,8 +1,9 @@
 module YaMap
   class Placemark < YaMap::MappingObject
+    attr_accessor :options, :extras
     # geo_point - GeoPoint.new(lat, lng)
     # extras - hash. :icon_content => 'Icon Content!', :name => 'Balloon Name', :description => 'Balloon Description'
-    def initialize geo_point, options = nil, extras = nil
+    def initialize geo_point, options = {}, extras = {}
       @geo_point = geo_point.is_a?(YaMap::GeoPoint) ? geo_point : YaMap::GeoPoint.new(geo_point)
       @options = options
       @extras = extras
