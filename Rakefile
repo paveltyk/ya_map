@@ -1,16 +1,15 @@
 require 'rake'
-require 'rake/testtask'
+require 'spec/rake/spectask'
 require 'rake/rdoctask'
 
-desc 'Default: run unit tests.'
-task :default => :test
+desc 'Default: run specs.'
+task :default => :spec
 
-desc 'Test the ya_map plugin.'
-Rake::TestTask.new(:test) do |t|
+desc 'Run the specs'
+Spec::Rake::SpecTask.new(:spec) do |t|
   t.libs << 'lib'
-  t.libs << 'test'
-  t.pattern = 'test/**/*_test.rb'
-  t.verbose = true
+  t.spec_opts = ['--colour --format nested --loadby mtime --reverse']
+  t.spec_files = FileList['spec/**/*_spec.rb']
 end
 
 desc 'Generate documentation for the ya_map plugin.'
