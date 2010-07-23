@@ -4,8 +4,8 @@ module YaMap
     JS_OBJECT_MAPPER_NAME = 'yandexObjectsMapper'
     attr_accessor :container
     attr_reader :init_overlay
-    def initialize(container = :map, options = {})
-      @container = container
+    def initialize(container = nil, options = {})
+      @container = container || :map
       @init_global = []
       @init_start = []
       @init_overlay = []
