@@ -20,6 +20,37 @@ Display map in your view
     <%= @map.div %>
   </body>
   </html>
+== More about Map
+Set map center and Zoom
+  @map.center_zoom_init([53.903499, 27.561741], 15)
+Enable scroll zoom
+  # Pass an option to initialize method
+  @map = Map.new nil, :enable_scroll_zoom => true
+  # Or call a method on a map instance
+  @map.enable_scroll_zoom
+Add Zoom Control to the Map
+  @map.control_init :zoom => true
+Change the position of Zoom Control (with 10px offsets) and set min_zoom and max_zoom values
+  zoom_control_position = ControlPosition.new ControlPosition::TOP_LEFT, :x => 10, :y => 10
+  @map.control_init :zoom => zoom_control_position
+  @map.set_min_zoom 10
+  @map.set_max_zoom 15
+You can insert JS code in different places of YMap initialization process, using _record_init_global_, _record_init_start_ and _record_init_end_
+  @map.record_init_global "alert('Record init global');"
+If JS is rather big, I would prefer to do it the view next way:
+  @map.record_init_global File.read("#{RAILS_ROOT}/public/javascripts/file-name.js")
+== More about Placemark
+Add placemark on the map
+  @map.add_overlay Placemark.new([53.903499, 27.561741])
+Add description, name and icon content to the placemark
+  placemark = Placemark.new([53.903499, 27.561741])
+  placemark.extras[:description] = 'Placemark description'
+  placemark.extras[:name] = 'Placemark name'
+  placemark.extras[:icon_content] = 'Icon content'
+Make placemark draggable
+  placemark.options[:draggable] = true
+== Note
+This plugin was written mainly to support the needs of my project flat-on-map.ru[http://flat-on-map.ru]
 == License
 
 Copyright (c) 2010 [PavelTyk]
