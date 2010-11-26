@@ -1,6 +1,6 @@
 = Yandex Map plugin for Rails
 == Install
-  script/plugin install git@github.com:PavelTyk/ya_map.git
+  script/plugin install git://github.com/PavelTyk/ya_map.git
 == Example
 Generate YML config file and JS
   script/generate ya_map
