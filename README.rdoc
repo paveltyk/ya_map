@@ -49,6 +49,18 @@ Add description, name and icon content to the placemark
   placemark.extras[:icon_content] = 'Icon content'
 Make placemark draggable
   placemark.options[:draggable] = true
+== Binding variables to JS
+Let's create an observer for a placemark. It's all about JS, but we need a reference for our placemark in JS. Here is the simplest approach:
+
+In a view:
+  @map.record_init_end "createPlacemarkObserver(#{@placemark.binding_variable});"
+In application.js (for example) define a function 'createPlacemarkObserver':
+  function createPlacemarkObserver(placemark) {
+    YMaps.Events.observe(placemark, placemark.Events.DragEnd, function(){
+      alert('lat=' + placemark.getGeoPoint().getY() + '; lng='+ placemark.getGeoPoint().getX() + ';');
+    });
+  }
+That's it!
 == Note
 This plugin was written mainly to support the needs of my project flat-on-map.ru[http://flat-on-map.ru]
 == License
